@@ -27,7 +27,7 @@ class TransportFilesService:
                         if len(get_files):
                             for file in get_files:
                                 get_folder_name = re.findall('([0-9]+)_', file['title'], flags=re.IGNORECASE)
-                                print(f"Subfolder name: {file['title']}")
+                                print(f"File name: {file['title']}")
                                 if len(get_folder_name):
                                     filtered_files.append({
                                         'parent_id': child['id'],
