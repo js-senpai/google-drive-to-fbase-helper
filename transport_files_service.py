@@ -17,7 +17,7 @@ class TransportFilesService:
                 parent_id = parent['id']
                 print(f"Parent folder name: {parent['title']}")
             if parent_id:
-                get_subfolders = self.gdrive_service.ListFile({'q': f"'{parent_id}' in parents"}).GetList()
+                get_subfolders = self.gdrive_service.ListFile({'q': f"'{parent_id}' in parents and mimeType='application/vnd.google-apps.folder'"}).GetList()
                 if len(get_subfolders):
                     filtered_files = []
                     for child in get_subfolders:
