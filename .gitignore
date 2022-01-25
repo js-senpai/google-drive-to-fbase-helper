@@ -1,0 +1,5 @@
+files/**/*
+client_secrets.json
+firebase_app_config.json
+firebase_cred.json
+.idea
