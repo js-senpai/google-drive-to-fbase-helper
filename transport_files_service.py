@@ -15,6 +15,7 @@ class TransportFilesService:
             parent_id = ''
             for parent in file_list:
                 parent_id = parent['id']
+                print(f"Parent folder name: {parent['title']}")
             if parent_id:
                 get_subfolders = self.gdrive_service.ListFile({'q': f"'{parent_id}' in parents"}).GetList()
                 if len(get_subfolders):
@@ -22,9 +23,11 @@ class TransportFilesService:
                     for child in get_subfolders:
                         get_files = self.gdrive_service.ListFile(
                             {'q': f"'{child['id']}' in parents"}).GetList()
+                        print(f"Subfolder name: {child['title']}")
                         if len(get_files):
                             for file in get_files:
                                 get_folder_name = re.findall('([0-9]+)_', file['title'], flags=re.IGNORECASE)
+                                print(f"Subfolder name: {file['title']}")
                                 if len(get_folder_name):
                                     filtered_files.append({
                                         'parent_id': child['id'],
@@ -33,6 +36,8 @@ class TransportFilesService:
                                         'name': file['title'],
                                         'mimeType': file['mimeType']
                                     })
+                                else:
+                                    print('Dont find title for file')
                         else:
                             print(f"Files not found in subfolder {child['title']}")
                     if len(filtered_files):
