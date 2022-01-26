@@ -1,0 +1,8 @@
+version: '3'
+services:
+  transfer_files_service:
+    container_name: 'transfer_files_service'
+    build:
+      context: .
+      dockerfile: service.Dockerfile
+    tty: true

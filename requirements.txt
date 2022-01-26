@@ -1,4 +1,2 @@
 firebase-admin
-google-cloud-storage
 PyDrive2
-firebase
