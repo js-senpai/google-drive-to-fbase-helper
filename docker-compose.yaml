@@ -1,6 +1,6 @@
 version: '3'
 services:
-  transfer_files_service:
+  app:
     container_name: 'transfer_files_service'
     build:
       context: .
